@@ -18,7 +18,7 @@ public class PlayerImpl extends FS_Player {
     }
 
     public PlayerImpl(Player bukkitPlayer) {
-        super(bukkitPlayer, GameProfileImpl.fromBukkit(bukkitPlayer.getPlayerProfile()));
+        super(bukkitPlayer, FS_GameProfile.fromBukkit(bukkitPlayer.getPlayerProfile()));
 
         this.vanillaPlayer = asVanilla(bukkitPlayer);
     }

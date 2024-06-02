@@ -1,7 +1,5 @@
 package de.oliver.fancysitula.versions.v1_20_6.utils;
 
-import com.destroystokyo.paper.profile.PlayerProfile;
-import com.destroystokyo.paper.profile.ProfileProperty;
 import com.mojang.authlib.GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 
@@ -28,16 +26,6 @@ public class GameProfileImpl {
             com.mojang.authlib.properties.Property property = entry.getValue();
 
             fsGameProfile.getProperties().put(entry.getKey(), new FS_GameProfile.Property(property.name(), property.value(), property.signature()));
-        }
-
-        return fsGameProfile;
-    }
-
-    public static FS_GameProfile fromBukkit(PlayerProfile gameProfile) {
-        FS_GameProfile fsGameProfile = new FS_GameProfile(gameProfile.getId(), gameProfile.getName());
-
-        for (ProfileProperty property : gameProfile.getProperties()) {
-            fsGameProfile.getProperties().put(property.getName(), new FS_GameProfile.Property(property.getName(), property.getValue(), property.getSignature()));
         }
 
         return fsGameProfile;

@@ -1,5 +1,8 @@
 package de.oliver.fancysitula.api.utils;
 
+import com.destroystokyo.paper.profile.PlayerProfile;
+import com.destroystokyo.paper.profile.ProfileProperty;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -18,6 +21,16 @@ public class FS_GameProfile {
 
     public FS_GameProfile(UUID uuid, String name) {
         this(uuid, name, new HashMap<>());
+    }
+
+    public static FS_GameProfile fromBukkit(PlayerProfile gameProfile) {
+        FS_GameProfile fsGameProfile = new FS_GameProfile(gameProfile.getId(), gameProfile.getName());
+
+        for (ProfileProperty property : gameProfile.getProperties()) {
+            fsGameProfile.getProperties().put(property.getName(), new FS_GameProfile.Property(property.getName(), property.getValue(), property.getSignature()));
+        }
+
+        return fsGameProfile;
     }
 
     public UUID getUUID() {

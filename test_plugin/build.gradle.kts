@@ -20,10 +20,12 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:${findProperty("minecraftVersion")}-R0.1-SNAPSHOT")
 
     implementation(project(":api"))
+    implementation(project(":factories"))
     implementation(project(":implementations:1_20_6"))
 }
 
 paper {
+    name = "FancySitula Test Plugin"
     main = "de.oliver.fancysitula.FancySitulaPlugin"
     bootstrapper = "de.oliver.fancysitula.loaders.FancySitulaPluginBootstrapper"
     loader = "de.oliver.fancysitula.loaders.FancySitulaPluginLoader"

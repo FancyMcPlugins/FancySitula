@@ -20,16 +20,6 @@ public abstract class FS_ClientboundPlayerInfoUpdatePacket implements FS_Clientb
         this.entries = entries;
     }
 
-    public FS_ClientboundPlayerInfoUpdatePacket(EnumSet<Action> actions, Entry entry) {
-        this.actions = actions;
-        this.entries = List.of(entry);
-    }
-
-    public FS_ClientboundPlayerInfoUpdatePacket(Action action, Entry entry) {
-        this.actions = EnumSet.of(action);
-        this.entries = List.of(entry);
-    }
-
     public EnumSet<Action> getActions() {
         return actions;
     }
