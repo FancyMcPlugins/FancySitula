@@ -1,6 +1,6 @@
-package de.oliver.fancysitula;
+package de.oliver.fancysitula.api;
 
-import de.oliver.fancysitula.factories.entities.PlayerFactory;
+import de.oliver.fancysitula.api.factories.PlayerFactory;
 
 public class FancySitula {
 

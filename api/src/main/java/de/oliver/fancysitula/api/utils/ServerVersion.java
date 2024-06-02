@@ -1,4 +1,4 @@
-package de.oliver.fancysitula.utils;
+package de.oliver.fancysitula.api.utils;
 
 import org.bukkit.Bukkit;
 

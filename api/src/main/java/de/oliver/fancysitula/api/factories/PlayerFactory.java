@@ -1,4 +1,4 @@
-package de.oliver.fancysitula.factories.entities;
+package de.oliver.fancysitula.api.factories;
 
 import de.oliver.fancysitula.api.entities.FS_Player;
 import de.oliver.fancysitula.utils.ServerVersion;
