@@ -1,0 +1,13 @@
+plugins {
+    id("java-library")
+    id("io.papermc.paperweight.userdev") version "1.7.1"
+}
+
+val minecraftVersion = "1.20.6"
+
+paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
+
+dependencies {
+    paperweight.paperDevBundle("$minecraftVersion-R0.1-SNAPSHOT")
+    compileOnly(project(":api"))
+}
