@@ -1,16 +1,6 @@
 # FancySitula
 
-## How to use the API
+FancySitula is a library that makes interacting with the minecraft internal easier. It is developed for FancyNpcs and
+FancyHolograms.
 
-### Gradle
-
-```gradle
-
-repositories {
-    maven("https://repo.fancyplugins.de/releases")
-}
-
-dependencies {
-    implementation("de.oliver:FancySitula:[VERSION]")
-}
-```
+**It is still in development and not ready for production use.**
