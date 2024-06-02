@@ -3,6 +3,7 @@ package de.oliver.fancysitula.versions.v1_20_6.packets;
 import de.oliver.fancysitula.api.entities.FS_Player;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.versions.v1_20_6.entities.PlayerImpl;
+import de.oliver.fancysitula.versions.v1_20_6.utils.GameProfileImpl;
 import io.papermc.paper.adventure.PaperAdventure;
 import net.minecraft.Optionull;
 import net.minecraft.network.chat.RemoteChatSession;
@@ -21,28 +22,34 @@ public class ClientboundPlayerInfoUpdatePacketImpl extends FS_ClientboundPlayerI
     }
 
     @Override
-    public void send(FS_Player player) {
-        EnumSet<ClientboundPlayerInfoUpdatePacket.Action> actions = EnumSet.noneOf(ClientboundPlayerInfoUpdatePacket.Action.class);
-        for (ClientboundPlayerInfoUpdatePacket.Action action : actions) {
-            actions.add(ClientboundPlayerInfoUpdatePacket.Action.valueOf(action.name()));
+    public Object createPacket() {
+        EnumSet<ClientboundPlayerInfoUpdatePacket.Action> vanillaActions = EnumSet.noneOf(ClientboundPlayerInfoUpdatePacket.Action.class);
+        for (FS_ClientboundPlayerInfoUpdatePacket.Action action : actions) {
+            vanillaActions.add(ClientboundPlayerInfoUpdatePacket.Action.valueOf(action.name()));
         }
 
         List<ClientboundPlayerInfoUpdatePacket.Entry> entries = new ArrayList<>();
         for (Entry entry : this.entries) {
-            ServerPlayer serverPlayer = PlayerImpl.asVanilla(entry.player());
+            ServerPlayer serverPlayer = ((PlayerImpl) entry.player()).getVanillaPlayer();
 
             entries.add(new ClientboundPlayerInfoUpdatePacket.Entry(
                     entry.uuid(),
-                    serverPlayer.gameProfile,
+                    GameProfileImpl.asVanilla(entry.player().getGameProfile()),
                     entry.listed(),
                     entry.latency(),
                     GameType.byId(entry.gameMode().getId()),
                     PaperAdventure.asVanilla(entry.displayName()),
-                    Optionull.map(serverPlayer.getChatSession(), RemoteChatSession::asData)
+                    serverPlayer == null ? null : Optionull.map(serverPlayer.getChatSession(), RemoteChatSession::asData)
             ));
         }
+        
+        return new ClientboundPlayerInfoUpdatePacket(vanillaActions, entries);
+    }
 
-        ClientboundPlayerInfoUpdatePacket packet = new ClientboundPlayerInfoUpdatePacket(actions, entries);
+    @Override
+    public void send(FS_Player player) {
+        ClientboundPlayerInfoUpdatePacket packet = (ClientboundPlayerInfoUpdatePacket) createPacket();
+
         ((PlayerImpl) player).getVanillaPlayer().connection.send(packet);
     }
 }

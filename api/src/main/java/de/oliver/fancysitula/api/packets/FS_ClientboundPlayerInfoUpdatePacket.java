@@ -1,9 +1,9 @@
 package de.oliver.fancysitula.api.packets;
 
+import de.oliver.fancysitula.api.entities.FS_Player;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
 import net.kyori.adventure.text.Component;
-import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class FS_ClientboundPlayerInfoUpdatePacket implements FS_ClientboundPacket {
-    
+
     protected EnumSet<Action> actions;
     protected List<Entry> entries;
 
@@ -55,7 +55,7 @@ public abstract class FS_ClientboundPlayerInfoUpdatePacket implements FS_Clientb
         UPDATE_DISPLAY_NAME,
     }
 
-    public record Entry(Player player,
+    public record Entry(FS_Player player,
                         UUID uuid,
                         @Nullable FS_GameProfile profile,
                         boolean listed,
