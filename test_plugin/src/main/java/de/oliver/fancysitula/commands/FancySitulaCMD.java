@@ -8,6 +8,7 @@ import de.oliver.fancysitula.factories.FancySitula;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,8 +49,26 @@ public class FancySitulaCMD extends Command {
         actions.add(FS_ClientboundPlayerInfoUpdatePacket.Action.UPDATE_LISTED);
 
         FancySitula.PACKET_FACTORY
-                .createPlayerInfoUpdatePacket(actions, List.of(entry)).
-                send(fsPlayer);
+                .createPlayerInfoUpdatePacket(actions, List.of(entry))
+                .send(fsPlayer);
+
+        FancySitula.PACKET_FACTORY
+                .createAddEntityPacket(
+                        420,
+                        fakeProfile.getUUID(),
+                        EntityType.PLAYER,
+                        p.getLocation().getX(),
+                        p.getLocation().getY(),
+                        p.getLocation().getZ(),
+                        p.getLocation().getYaw(),
+                        p.getLocation().getPitch(),
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                )
+                .send(fsPlayer);
 
         return true;
     }

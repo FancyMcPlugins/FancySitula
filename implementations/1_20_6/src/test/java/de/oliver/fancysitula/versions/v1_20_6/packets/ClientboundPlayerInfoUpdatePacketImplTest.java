@@ -16,7 +16,7 @@ import java.util.UUID;
 class ClientboundPlayerInfoUpdatePacketImplTest {
 
     @Test
-    void send() {
+    void createPacket() {
         // Setup packet
         EnumSet<FS_ClientboundPlayerInfoUpdatePacket.Action> actions = EnumSet.noneOf(FS_ClientboundPlayerInfoUpdatePacket.Action.class);
         actions.add(FS_ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER);
@@ -42,22 +42,22 @@ class ClientboundPlayerInfoUpdatePacketImplTest {
 
         ClientboundPlayerInfoUpdatePacketImpl packet = new ClientboundPlayerInfoUpdatePacketImpl(actions, entries);
 
-        if (packet.createPacket() instanceof ClientboundPlayerInfoUpdatePacket createdPacket) {
-            assert createdPacket.entries().size() == 1;
-            assert createdPacket.actions().size() == 3;
+        ClientboundPlayerInfoUpdatePacket createdPacket = (ClientboundPlayerInfoUpdatePacket) packet.createPacket();
 
-            // check entry
-            ClientboundPlayerInfoUpdatePacket.Entry entry = createdPacket.entries().getFirst();
-            assert entry.profile().getId().equals(gameProfile.getUUID());
-            assert entry.profile().getName().equals(gameProfile.getName());
-            assert entry.listed() == listed;
-            assert entry.latency() == latency;
-            assert entry.gameMode().getId() == gameMode.getId();
+        assert createdPacket.entries().size() == 1;
+        assert createdPacket.actions().size() == 3;
 
-            // check actions
-            assert createdPacket.actions().contains(ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER);
-            assert createdPacket.actions().contains(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_DISPLAY_NAME);
-            assert createdPacket.actions().contains(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_LISTED);
-        }
+        // check entry
+        ClientboundPlayerInfoUpdatePacket.Entry entry = createdPacket.entries().getFirst();
+        assert entry.profile().getId().equals(gameProfile.getUUID());
+        assert entry.profile().getName().equals(gameProfile.getName());
+        assert entry.listed() == listed;
+        assert entry.latency() == latency;
+        assert entry.gameMode().getId() == gameMode.getId();
+
+        // check actions
+        assert createdPacket.actions().contains(ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER);
+        assert createdPacket.actions().contains(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_DISPLAY_NAME);
+        assert createdPacket.actions().contains(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_LISTED);
     }
 }

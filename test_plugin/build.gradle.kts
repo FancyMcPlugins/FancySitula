@@ -25,7 +25,7 @@ dependencies {
 }
 
 paper {
-    name = "FancySitula Test Plugin"
+    name = "FancySitulaTestPlugin"
     main = "de.oliver.fancysitula.FancySitulaPlugin"
     bootstrapper = "de.oliver.fancysitula.loaders.FancySitulaPluginBootstrapper"
     loader = "de.oliver.fancysitula.loaders.FancySitulaPluginLoader"
