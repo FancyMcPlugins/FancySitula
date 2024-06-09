@@ -1,6 +1,7 @@
 package de.oliver.fancysitula.factories;
 
 import de.oliver.fancysitula.api.packets.FS_ClientboundAddEntityPacket;
+import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoRemovePacket;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.api.utils.ServerVersion;
 import org.bukkit.entity.EntityType;
@@ -91,4 +92,36 @@ public class PacketFactory {
         return createAddEntityPacket(ServerVersion.getCurrentVersion(), entityId, entityUUID, entityType, x, y, z, yaw, pitch, headYaw, velocityX, velocityY, velocityZ, data);
     }
 
+    /**
+     * Creates a new FS_ClientboundPlayerInfoRemovePacket instance based on the server version
+     */
+    public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(ServerVersion serverVersion, List<UUID> uuids) {
+        switch (serverVersion) {
+            case v1_20_6 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundPlayerInfoRemovePacketImpl(uuids);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a new FS_ClientboundPlayerInfoRemovePacket instance based on the current server version
+     */
+    public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(List<UUID> uuids) {
+        return createPlayerInfoRemovePacket(ServerVersion.getCurrentVersion(), uuids);
+    }
+
+    /**
+     * Creates a new FS_ClientboundPlayerInfoRemovePacket instance based on the server version
+     */
+    public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(ServerVersion serverVersion, UUID uuid) {
+        return createPlayerInfoRemovePacket(serverVersion, List.of(uuid));
+    }
+
+    /**
+     * Creates a new FS_ClientboundPlayerInfoRemovePacket instance based on the current server version
+     */
+    public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(UUID uuid) {
+        return createPlayerInfoRemovePacket(ServerVersion.getCurrentVersion(), uuid);
+    }
 }
