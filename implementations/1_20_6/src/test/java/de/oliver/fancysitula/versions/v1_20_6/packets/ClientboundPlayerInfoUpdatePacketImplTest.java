@@ -1,9 +1,9 @@
 package de.oliver.fancysitula.versions.v1_20_6.packets;
 
+import de.oliver.fancysitula.api.entities.FS_Player;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
-import de.oliver.fancysitula.versions.v1_20_6.entities.PlayerImpl;
 import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ class ClientboundPlayerInfoUpdatePacketImplTest {
 
         List<FS_ClientboundPlayerInfoUpdatePacket.Entry> entries = new ArrayList<>();
         entries.add(new FS_ClientboundPlayerInfoUpdatePacket.Entry(
-                new PlayerImpl(gameProfile),
+                new FS_Player(gameProfile),
                 gameProfile.getUUID(),
                 null,
                 listed,
