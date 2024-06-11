@@ -20,7 +20,7 @@ supported:
 
 - [x] ClientboundRemoveEntitiesPacket
 - [x] ClientboundTeleportEntityPacket
-- [ ] ClientboundRotateHeadPacket
+- [x] ClientboundRotateHeadPacket
 - [ ] ClientboundSetPlayerTeamPacket
 - [ ] ClientboundSetEquipmentPacket
 - [ ] ClientboundUpdateAttributesPacket

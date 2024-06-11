@@ -211,4 +211,29 @@ public class PacketFactory {
     ) {
         return createTeleportEntityPacket(ServerVersion.getCurrentVersion(), entityId, x, y, z, yaw, pitch, onGround);
     }
+
+    /**
+     * Creates a new FS_ClientboundRotateHeadPacket instance based on the server version
+     *
+     * @param entityId ID of the entity to rotate the head of
+     * @param headYaw  Yaw of the head in degrees (0 - 360)
+     */
+    public FS_ClientboundRotateHeadPacket createRotateHeadPacket(ServerVersion serverVersion, int entityId, float headYaw) {
+        switch (serverVersion) {
+            case v1_20_6 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundRotateHeadPacketImpl(entityId, headYaw);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a new FS_ClientboundRotateHeadPacket instance based on the current server version
+     *
+     * @param entityId ID of the entity to rotate the head of
+     * @param headYaw  Yaw of the head in degrees (0 - 360)
+     */
+    public FS_ClientboundRotateHeadPacket createRotateHeadPacket(int entityId, float headYaw) {
+        return createRotateHeadPacket(ServerVersion.getCurrentVersion(), entityId, headYaw);
+    }
 }

@@ -24,6 +24,12 @@ public class ReflectionUtils {
         return constructor.newInstance();
     }
 
+    public static Object getField(Object object, String fieldName) throws Exception {
+        Field field = object.getClass().getDeclaredField(fieldName);
+        field.setAccessible(true);
+        return field.get(object);
+    }
+
     public static void setField(Object object, String fieldName, Object value) throws Exception {
         Field field = object.getClass().getDeclaredField(fieldName);
         field.setAccessible(true);
