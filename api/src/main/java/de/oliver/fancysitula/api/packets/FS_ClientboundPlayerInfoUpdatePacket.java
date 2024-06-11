@@ -1,6 +1,5 @@
 package de.oliver.fancysitula.api.packets;
 
-import de.oliver.fancysitula.api.entities.FS_Player;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
 import net.kyori.adventure.text.Component;
@@ -48,9 +47,8 @@ public abstract class FS_ClientboundPlayerInfoUpdatePacket implements FS_Clientb
         UPDATE_DISPLAY_NAME,
     }
 
-    public record Entry(FS_Player player,
-                        UUID uuid,
-                        @Nullable FS_GameProfile profile,
+    public record Entry(UUID uuid,
+                        FS_GameProfile profile,
                         boolean listed,
                         int latency,
                         FS_GameType gameMode,

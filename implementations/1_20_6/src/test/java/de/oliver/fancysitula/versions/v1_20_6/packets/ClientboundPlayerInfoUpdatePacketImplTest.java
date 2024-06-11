@@ -1,6 +1,5 @@
 package de.oliver.fancysitula.versions.v1_20_6.packets;
 
-import de.oliver.fancysitula.api.entities.FS_Player;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
@@ -31,9 +30,8 @@ class ClientboundPlayerInfoUpdatePacketImplTest {
 
         List<FS_ClientboundPlayerInfoUpdatePacket.Entry> entries = new ArrayList<>();
         entries.add(new FS_ClientboundPlayerInfoUpdatePacket.Entry(
-                new FS_Player(gameProfile),
                 gameProfile.getUUID(),
-                null,
+                gameProfile,
                 listed,
                 latency,
                 gameMode,

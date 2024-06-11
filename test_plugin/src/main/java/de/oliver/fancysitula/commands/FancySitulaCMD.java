@@ -1,6 +1,5 @@
 package de.oliver.fancysitula.commands;
 
-import de.oliver.fancysitula.api.entities.FS_Player;
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
@@ -35,11 +34,9 @@ public class FancySitulaCMD extends Command {
 
         // Create a fake player
         FS_GameProfile fakeProfile = new FS_GameProfile(UUID.randomUUID(), "FakePlayer");
-        FS_Player fakePlayer = new FS_Player(fakeProfile);
 
         // PlayerInfoUpdatePacket
         FS_ClientboundPlayerInfoUpdatePacket.Entry entry = new FS_ClientboundPlayerInfoUpdatePacket.Entry(
-                fakePlayer,
                 fakeProfile.getUUID(),
                 fakeProfile,
                 true,

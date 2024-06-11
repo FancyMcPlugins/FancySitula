@@ -30,7 +30,7 @@ public class ClientboundPlayerInfoUpdatePacketImpl extends FS_ClientboundPlayerI
         for (Entry entry : this.entries) {
             entries.add(new ClientboundPlayerInfoUpdatePacket.Entry(
                     entry.uuid(),
-                    GameProfileImpl.asVanilla(entry.player().getGameProfile()),
+                    GameProfileImpl.asVanilla(entry.profile()),
                     entry.listed(),
                     entry.latency(),
                     GameType.byId(entry.gameMode().getId()),
