@@ -1,11 +1,12 @@
 package de.oliver.fancysitula.versions.v1_20_6.packets;
 
-import de.oliver.fancysitula.api.entities.FS_Player;
+import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundAddEntityPacket;
 import de.oliver.fancysitula.api.utils.AngelConverter;
-import de.oliver.fancysitula.versions.v1_20_6.entities.PlayerImpl;
+import de.oliver.fancysitula.versions.v1_20_6.utils.VanillaPlayerAdapter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.Vec3;
 import org.bukkit.craftbukkit.util.CraftNamespacedKey;
 import org.bukkit.entity.EntityType;
@@ -38,9 +39,10 @@ public class ClientboundAddEntityPacketImpl extends FS_ClientboundAddEntityPacke
     }
 
     @Override
-    public void send(FS_Player player) {
+    public void send(FS_RealPlayer player) {
         ClientboundAddEntityPacket packet = (ClientboundAddEntityPacket) createPacket();
 
-        ((PlayerImpl) player).getVanillaPlayer().connection.send(packet);
+        ServerPlayer vanillaPlayer = VanillaPlayerAdapter.asVanilla(player.getBukkitPlayer());
+        vanillaPlayer.connection.send(packet);
     }
 }

@@ -1,6 +1,7 @@
 package de.oliver.fancysitula.commands;
 
 import de.oliver.fancysitula.api.entities.FS_Player;
+import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
@@ -29,11 +30,14 @@ public class FancySitulaCMD extends Command {
             return true;
         }
 
-        FS_Player fsPlayer = FancySitula.PLAYER_FACTORY.createPlayer(p, FS_GameProfile.fromBukkit(p.getPlayerProfile()));
+        // Wrap the real player into an FS_Player instance
+        FS_RealPlayer fsPlayer = new FS_RealPlayer(p);
 
+        // Create a fake player
         FS_GameProfile fakeProfile = new FS_GameProfile(UUID.randomUUID(), "FakePlayer");
-        FS_Player fakePlayer = FancySitula.PLAYER_FACTORY.createPlayer(null, fakeProfile);
+        FS_Player fakePlayer = new FS_Player(fakeProfile);
 
+        // PlayerInfoUpdatePacket
         FS_ClientboundPlayerInfoUpdatePacket.Entry entry = new FS_ClientboundPlayerInfoUpdatePacket.Entry(
                 fakePlayer,
                 fakeProfile.getUUID(),
@@ -52,6 +56,7 @@ public class FancySitulaCMD extends Command {
                 .createPlayerInfoUpdatePacket(actions, List.of(entry))
                 .send(fsPlayer);
 
+        // AddEntityPacket
         FancySitula.PACKET_FACTORY
                 .createAddEntityPacket(
                         420,

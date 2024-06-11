@@ -1,9 +1,10 @@
 package de.oliver.fancysitula.versions.v1_20_6.packets;
 
-import de.oliver.fancysitula.api.entities.FS_Player;
+import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundRemoveEntitiesPacket;
-import de.oliver.fancysitula.versions.v1_20_6.entities.PlayerImpl;
+import de.oliver.fancysitula.versions.v1_20_6.utils.VanillaPlayerAdapter;
 import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
+import net.minecraft.server.level.ServerPlayer;
 
 import java.util.List;
 
@@ -27,9 +28,10 @@ public class ClientboundRemoveEntitiesPacketImpl extends FS_ClientboundRemoveEnt
     }
 
     @Override
-    public void send(FS_Player player) {
+    public void send(FS_RealPlayer player) {
         ClientboundRemoveEntitiesPacket packet = (ClientboundRemoveEntitiesPacket) createPacket();
 
-        ((PlayerImpl) player).getVanillaPlayer().connection.send(packet);
+        ServerPlayer vanillaPlayer = VanillaPlayerAdapter.asVanilla(player.getBukkitPlayer());
+        vanillaPlayer.connection.send(packet);
     }
 }

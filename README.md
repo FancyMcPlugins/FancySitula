@@ -18,7 +18,7 @@ supported:
 
 ## Missing Packets (for FancyNpcs)
 
-- [ ] ClientboundRemoveEntitiesPacket
+- [x] ClientboundRemoveEntitiesPacket
 - [ ] ClientboundTeleportEntityPacket
 - [ ] ClientboundRotateHeadPacket
 - [ ] ClientboundSetPlayerTeamPacket

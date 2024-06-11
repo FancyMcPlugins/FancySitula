@@ -28,8 +28,6 @@ dependencies {
 tasks {
     shadowJar {
         archiveClassifier.set("")
-
-        dependsOn(":api:shadowJar")
     }
 
     publishing {

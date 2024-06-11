@@ -31,7 +31,7 @@ class ClientboundPlayerInfoUpdatePacketImplTest {
 
         List<FS_ClientboundPlayerInfoUpdatePacket.Entry> entries = new ArrayList<>();
         entries.add(new FS_ClientboundPlayerInfoUpdatePacket.Entry(
-                new PlayerImpl(null, gameProfile),
+                new PlayerImpl(gameProfile),
                 gameProfile.getUUID(),
                 null,
                 listed,
