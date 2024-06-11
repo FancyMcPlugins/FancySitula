@@ -34,6 +34,9 @@ public enum ServerVersion {
         return null;
     }
 
+    /**
+     * @return the current server version of the server the plugin is running on
+     */
     public static ServerVersion getCurrentVersion() {
         return getByVersion(Bukkit.getMinecraftVersion());
     }

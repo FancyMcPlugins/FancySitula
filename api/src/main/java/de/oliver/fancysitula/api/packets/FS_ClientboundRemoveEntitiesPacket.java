@@ -2,6 +2,9 @@ package de.oliver.fancysitula.api.packets;
 
 import java.util.List;
 
+/**
+ * Used to remove entities from the client's world.
+ */
 public abstract class FS_ClientboundRemoveEntitiesPacket implements FS_ClientboundPacket {
 
     protected List<Integer> entityIds;

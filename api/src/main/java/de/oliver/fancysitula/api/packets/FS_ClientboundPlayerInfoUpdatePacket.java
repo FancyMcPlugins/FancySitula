@@ -10,6 +10,9 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Used to update the player list of the client.
+ */
 public abstract class FS_ClientboundPlayerInfoUpdatePacket implements FS_ClientboundPacket {
 
     protected EnumSet<Action> actions;
