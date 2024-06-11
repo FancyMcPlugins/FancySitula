@@ -1,10 +1,9 @@
 ![](fancysitula_title.png)
 
-FancySitula is a library that makes interacting with the minecraft internal easier.
+## Using Minecraft internals made easier.
 
-Developed for FancyNpcs and FancyHolograms.
-
-**It is still in development and not ready for production use.**
+Developed for FancyNpcs and FancyHolograms exclusively, FancySitula is a library that simplifies the process of
+interacting with Minecraft internals. It provides a simple API to interact with Minecraft packets and entities.
 
 ## Supported Minecraft versions
 
