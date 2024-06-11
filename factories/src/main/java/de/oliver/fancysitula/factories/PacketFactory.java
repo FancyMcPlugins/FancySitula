@@ -3,6 +3,7 @@ package de.oliver.fancysitula.factories;
 import de.oliver.fancysitula.api.packets.FS_ClientboundAddEntityPacket;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoRemovePacket;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
+import de.oliver.fancysitula.api.packets.FS_ClientboundRemoveEntitiesPacket;
 import de.oliver.fancysitula.api.utils.ServerVersion;
 import org.bukkit.entity.EntityType;
 
@@ -17,6 +18,9 @@ public class PacketFactory {
 
     /**
      * Creates a new FS_ClientboundPlayerInfoUpdatePacket instance based on the server version
+     *
+     * @param actions EnumSet of {@link FS_ClientboundPlayerInfoUpdatePacket.Action} to perform
+     * @param entries List of {@link FS_ClientboundPlayerInfoUpdatePacket.Entry} to update
      */
     public FS_ClientboundPlayerInfoUpdatePacket createPlayerInfoUpdatePacket(
             ServerVersion serverVersion, EnumSet<FS_ClientboundPlayerInfoUpdatePacket.Action> actions,
@@ -31,6 +35,9 @@ public class PacketFactory {
 
     /**
      * Creates a new FS_ClientboundPlayerInfoUpdatePacket instance based on the current server version
+     *
+     * @param actions EnumSet of {@link FS_ClientboundPlayerInfoUpdatePacket.Action} to perform
+     * @param entries List of {@link FS_ClientboundPlayerInfoUpdatePacket.Entry} to update
      */
     public FS_ClientboundPlayerInfoUpdatePacket createPlayerInfoUpdatePacket(
             EnumSet<FS_ClientboundPlayerInfoUpdatePacket.Action> actions,
@@ -94,6 +101,8 @@ public class PacketFactory {
 
     /**
      * Creates a new FS_ClientboundPlayerInfoRemovePacket instance based on the server version
+     *
+     * @param uuids UUIDs of the players to remove
      */
     public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(ServerVersion serverVersion, List<UUID> uuids) {
         switch (serverVersion) {
@@ -106,6 +115,8 @@ public class PacketFactory {
 
     /**
      * Creates a new FS_ClientboundPlayerInfoRemovePacket instance based on the current server version
+     *
+     * @param uuids UUIDs of the players to remove
      */
     public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(List<UUID> uuids) {
         return createPlayerInfoRemovePacket(ServerVersion.getCurrentVersion(), uuids);
@@ -113,6 +124,8 @@ public class PacketFactory {
 
     /**
      * Creates a new FS_ClientboundPlayerInfoRemovePacket instance based on the server version
+     *
+     * @param uuid UUID of the player to remove
      */
     public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(ServerVersion serverVersion, UUID uuid) {
         return createPlayerInfoRemovePacket(serverVersion, List.of(uuid));
@@ -120,8 +133,33 @@ public class PacketFactory {
 
     /**
      * Creates a new FS_ClientboundPlayerInfoRemovePacket instance based on the current server version
+     *
+     * @param uuid UUID of the player to remove
      */
     public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(UUID uuid) {
         return createPlayerInfoRemovePacket(ServerVersion.getCurrentVersion(), uuid);
+    }
+
+    /**
+     * Creates a new FS_ClientboundRemoveEntitiesPacket instance based on the server version
+     *
+     * @param entityIds IDs of the entities to remove
+     */
+    public FS_ClientboundRemoveEntitiesPacket createRemoveEntitiesPacket(ServerVersion serverVersion, List<Integer> entityIds) {
+        switch (serverVersion) {
+            case v1_20_6 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundRemoveEntitiesPacketImpl(entityIds);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a new FS_ClientboundRemoveEntitiesPacket instance based on the current server version
+     *
+     * @param entityIds IDs of the entities to remove
+     */
+    public FS_ClientboundRemoveEntitiesPacket createRemoveEntitiesPacket(List<Integer> entityIds) {
+        return createRemoveEntitiesPacket(ServerVersion.getCurrentVersion(), entityIds);
     }
 }
