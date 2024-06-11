@@ -1,9 +1,6 @@
 package de.oliver.fancysitula.factories;
 
-import de.oliver.fancysitula.api.packets.FS_ClientboundAddEntityPacket;
-import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoRemovePacket;
-import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
-import de.oliver.fancysitula.api.packets.FS_ClientboundRemoveEntitiesPacket;
+import de.oliver.fancysitula.api.packets.*;
 import de.oliver.fancysitula.api.utils.ServerVersion;
 import org.bukkit.entity.EntityType;
 
@@ -161,5 +158,57 @@ public class PacketFactory {
      */
     public FS_ClientboundRemoveEntitiesPacket createRemoveEntitiesPacket(List<Integer> entityIds) {
         return createRemoveEntitiesPacket(ServerVersion.getCurrentVersion(), entityIds);
+    }
+
+    /**
+     * Creates a new FS_ClientboundTeleportEntityPacket instance based on the server version
+     *
+     * @param entityId ID of the entity to teleport
+     * @param x        X coordinate
+     * @param y        Y coordinate
+     * @param z        Z coordinate
+     * @param yaw      Yaw in degrees (0 - 360)
+     * @param pitch    Pitch in degrees (0 - 360)
+     * @param onGround Whether the entity is on the ground
+     */
+    public FS_ClientboundTeleportEntityPacket createTeleportEntityPacket(
+            ServerVersion serverVersion,
+            int entityId,
+            double x,
+            double y,
+            double z,
+            float yaw,
+            float pitch,
+            boolean onGround
+    ) {
+        switch (serverVersion) {
+            case v1_20_6 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundTeleportEntityPacketImpl(entityId, x, y, z, yaw, pitch, onGround);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a new FS_ClientboundTeleportEntityPacket instance based on the current server version
+     *
+     * @param entityId ID of the entity to teleport
+     * @param x        X coordinate
+     * @param y        Y coordinate
+     * @param z        Z coordinate
+     * @param yaw      Yaw in degrees (0 - 360)
+     * @param pitch    Pitch in degrees (0 - 360)
+     * @param onGround Whether the entity is on the ground
+     */
+    public FS_ClientboundTeleportEntityPacket createTeleportEntityPacket(
+            int entityId,
+            double x,
+            double y,
+            double z,
+            float yaw,
+            float pitch,
+            boolean onGround
+    ) {
+        return createTeleportEntityPacket(ServerVersion.getCurrentVersion(), entityId, x, y, z, yaw, pitch, onGround);
     }
 }
