@@ -16,8 +16,11 @@ supported:
 - [ ] 1.20.2
 - [ ] 1.20.1
 
-## Missing Packets (for FancyNpcs)
+## Missing Packets (for FancyNpcs and FancyHolograms)
 
+- [x] ClientboundPlayerInfoUpdatePacket
+- [x] ClientboundAddEntityPacket
+- [x] ClientboundPlayerInfoRemovePacket
 - [x] ClientboundRemoveEntitiesPacket
 - [x] ClientboundTeleportEntityPacket
 - [x] ClientboundRotateHeadPacket
