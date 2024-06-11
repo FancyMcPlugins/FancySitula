@@ -30,4 +30,3 @@ supported:
 - [ ] ClientboundSetEntityDataPacket
 - [ ] ClientboundAnimatePacket
 - [ ] ClientboundSetPassengersPacket
-- [ ] ClientboundSetPlayerTeamPacket
