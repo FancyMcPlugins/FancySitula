@@ -59,6 +59,55 @@ public class FS_TextDisplay extends FS_Display {
         this.styleFlagsData.setValue(styleFlags);
     }
 
+    public void setStyleFlag(byte flag, boolean value) {
+        byte styleFlags = getStyleFlags();
+        if (value) {
+            this.styleFlagsData.setValue((byte) (styleFlags | flag));
+        } else {
+            this.styleFlagsData.setValue((byte) (styleFlags & ~flag));
+        }
+    }
+
+    public boolean hasStyleFlag(byte flag) {
+        return (getStyleFlags() & flag) == flag;
+    }
+
+    public void setShadow(boolean shadow) {
+        setStyleFlag((byte) 1, shadow);
+    }
+
+    public boolean hasShadow() {
+        return hasStyleFlag((byte) 1);
+    }
+
+    public boolean isSeeThrough() {
+        return hasStyleFlag((byte) 2);
+    }
+
+    public void setSeeThrough(boolean seeThrough) {
+        setStyleFlag((byte) 2, seeThrough);
+    }
+
+    public void setUseDefaultBackground(boolean defaultBackground) {
+        setStyleFlag((byte) 4, defaultBackground);
+    }
+
+    public boolean isUsingDefaultBackground() {
+        return hasStyleFlag((byte) 4);
+    }
+
+    public boolean isAlignLeft() {
+        return hasStyleFlag((byte) 8);
+    }
+
+    public void setAlignLeft(boolean alignLeft) {
+        setStyleFlag((byte) 8, alignLeft);
+    }
+
+    public void setAlignRight(boolean alignRight) {
+        setStyleFlag((byte) 16, alignRight);
+    }
+
     @Override
     public List<FS_ClientboundSetEntityDataPacket.EntityData> getEntityData() {
         List<FS_ClientboundSetEntityDataPacket.EntityData> entityData = super.getEntityData();
