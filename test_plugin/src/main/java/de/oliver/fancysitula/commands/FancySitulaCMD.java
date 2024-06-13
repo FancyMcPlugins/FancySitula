@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 
 public class FancySitulaCMD extends Command {
 
@@ -26,6 +27,8 @@ public class FancySitulaCMD extends Command {
         FS_RealPlayer fsPlayer = new FS_RealPlayer(p);
 
         FS_TextDisplay fakeTextDisplay = new FS_TextDisplay();
+        fakeTextDisplay.setBillboardRenderConstraints((byte) 3);
+        fakeTextDisplay.setScale(new Vector3f(5f));
         fakeTextDisplay.setLocation(p.getLocation());
         fakeTextDisplay.setText(Component.text("Hello, World!"));
         fakeTextDisplay.setBackground(0xFF00C8FF);

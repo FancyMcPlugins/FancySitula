@@ -2,7 +2,7 @@ package de.oliver.fancysitula.api.utils.entityData;
 
 import de.oliver.fancysitula.api.packets.FS_ClientboundSetEntityDataPacket;
 
-public class TextDisplayData {
+public class FS_TextDisplayData {
 
     /**
      * Use {@link net.kyori.adventure.text.Component} as value

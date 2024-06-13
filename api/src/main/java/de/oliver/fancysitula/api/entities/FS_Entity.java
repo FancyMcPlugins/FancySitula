@@ -1,7 +1,7 @@
 package de.oliver.fancysitula.api.entities;
 
 import de.oliver.fancysitula.api.packets.FS_ClientboundSetEntityDataPacket;
-import de.oliver.fancysitula.api.utils.entityData.EntityData;
+import de.oliver.fancysitula.api.utils.entityData.FS_EntityData;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
@@ -33,13 +33,13 @@ public class FS_Entity {
 
     protected int data = 0;
 
-    protected FS_ClientboundSetEntityDataPacket.EntityData sharedFlagsData = new FS_ClientboundSetEntityDataPacket.EntityData(EntityData.SHARED_FLAGS, null);
-    protected FS_ClientboundSetEntityDataPacket.EntityData airSupplyData = new FS_ClientboundSetEntityDataPacket.EntityData(EntityData.AIR_SUPPLY, null);
-    protected FS_ClientboundSetEntityDataPacket.EntityData customNameData = new FS_ClientboundSetEntityDataPacket.EntityData(EntityData.CUSTOM_NAME, null);
-    protected FS_ClientboundSetEntityDataPacket.EntityData customNameVisibleData = new FS_ClientboundSetEntityDataPacket.EntityData(EntityData.CUSTOM_NAME_VISIBLE, null);
-    protected FS_ClientboundSetEntityDataPacket.EntityData silentData = new FS_ClientboundSetEntityDataPacket.EntityData(EntityData.SILENT, null);
-    protected FS_ClientboundSetEntityDataPacket.EntityData noGravityData = new FS_ClientboundSetEntityDataPacket.EntityData(EntityData.NO_GRAVITY, null);
-    protected FS_ClientboundSetEntityDataPacket.EntityData ticksFrozenData = new FS_ClientboundSetEntityDataPacket.EntityData(EntityData.TICKS_FROZEN, null);
+    protected FS_ClientboundSetEntityDataPacket.EntityData sharedFlagsData = new FS_ClientboundSetEntityDataPacket.EntityData(FS_EntityData.SHARED_FLAGS, null);
+    protected FS_ClientboundSetEntityDataPacket.EntityData airSupplyData = new FS_ClientboundSetEntityDataPacket.EntityData(FS_EntityData.AIR_SUPPLY, null);
+    protected FS_ClientboundSetEntityDataPacket.EntityData customNameData = new FS_ClientboundSetEntityDataPacket.EntityData(FS_EntityData.CUSTOM_NAME, null);
+    protected FS_ClientboundSetEntityDataPacket.EntityData customNameVisibleData = new FS_ClientboundSetEntityDataPacket.EntityData(FS_EntityData.CUSTOM_NAME_VISIBLE, null);
+    protected FS_ClientboundSetEntityDataPacket.EntityData silentData = new FS_ClientboundSetEntityDataPacket.EntityData(FS_EntityData.SILENT, null);
+    protected FS_ClientboundSetEntityDataPacket.EntityData noGravityData = new FS_ClientboundSetEntityDataPacket.EntityData(FS_EntityData.NO_GRAVITY, null);
+    protected FS_ClientboundSetEntityDataPacket.EntityData ticksFrozenData = new FS_ClientboundSetEntityDataPacket.EntityData(FS_EntityData.TICKS_FROZEN, null);
 
     public FS_Entity(EntityType type) {
         this.type = type;

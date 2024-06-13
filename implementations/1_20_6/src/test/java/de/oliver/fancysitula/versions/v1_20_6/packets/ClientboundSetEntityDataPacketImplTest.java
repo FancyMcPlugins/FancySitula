@@ -1,7 +1,7 @@
 package de.oliver.fancysitula.versions.v1_20_6.packets;
 
 import de.oliver.fancysitula.api.packets.FS_ClientboundSetEntityDataPacket;
-import de.oliver.fancysitula.api.utils.entityData.TextDisplayData;
+import de.oliver.fancysitula.api.utils.entityData.FS_TextDisplayData;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 
 import java.util.List;
@@ -14,7 +14,7 @@ class ClientboundSetEntityDataPacketImplTest {
         int entityId = 712;
         List<FS_ClientboundSetEntityDataPacket.EntityData> entityData = List.of(
                 new FS_ClientboundSetEntityDataPacket.EntityData(
-                        TextDisplayData.TEXT,
+                        FS_TextDisplayData.TEXT,
                         "Hello, World!"
                 )
         );
