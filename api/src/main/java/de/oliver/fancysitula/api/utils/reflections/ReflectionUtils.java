@@ -63,4 +63,10 @@ public class ReflectionUtils {
             unsafe.putObject(target, offset, value);
         }
     }
+
+    public static <T> T getStaticField(Class<?> clazz, String fieldName) throws NoSuchFieldException, IllegalAccessException {
+        Field field = clazz.getDeclaredField(fieldName);
+        field.setAccessible(true);
+        return (T) field.get(null);
+    }
 }

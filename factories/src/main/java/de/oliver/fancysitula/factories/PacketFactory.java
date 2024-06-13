@@ -236,4 +236,30 @@ public class PacketFactory {
     public FS_ClientboundRotateHeadPacket createRotateHeadPacket(int entityId, float headYaw) {
         return createRotateHeadPacket(ServerVersion.getCurrentVersion(), entityId, headYaw);
     }
+
+    /**
+     * Creates a new FS_ClientboundSetEntityDataPacket instance based on the server version
+     *
+     * @param entityId   ID of the entity to set the data of
+     * @param entityData List of {@link FS_ClientboundSetEntityDataPacket.EntityData} to set
+     */
+    public FS_ClientboundSetEntityDataPacket createSetEntityDataPacket(
+            ServerVersion serverVersion, int entityId, List<FS_ClientboundSetEntityDataPacket.EntityData> entityData) {
+        switch (serverVersion) {
+            case v1_20_6 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundSetEntityDataPacketImpl(entityId, entityData);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a new FS_ClientboundSetEntityDataPacket instance based on the current server version
+     *
+     * @param entityId   ID of the entity to set the data of
+     * @param entityData List of {@link FS_ClientboundSetEntityDataPacket.EntityData} to set
+     */
+    public FS_ClientboundSetEntityDataPacket createSetEntityDataPacket(int entityId, List<FS_ClientboundSetEntityDataPacket.EntityData> entityData) {
+        return createSetEntityDataPacket(ServerVersion.getCurrentVersion(), entityId, entityData);
+    }
 }
