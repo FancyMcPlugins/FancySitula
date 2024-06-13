@@ -24,12 +24,16 @@ public class ClientboundSetEntityDataPacketImpl extends FS_ClientboundSetEntityD
         List<SynchedEntityData.DataValue<?>> dataValues = new ArrayList<>();
         for (EntityData data : entityData) {
             try {
-                Class<?> entityClass = Class.forName(data.accessor().entityClassName());
-                net.minecraft.network.syncher.EntityDataAccessor<Object> accessor = ReflectionUtils.getStaticField(entityClass, data.accessor().accessorFieldName());
+                Class<?> entityClass = Class.forName(data.getAccessor().entityClassName());
+                net.minecraft.network.syncher.EntityDataAccessor<Object> accessor = ReflectionUtils.getStaticField(entityClass, data.getAccessor().accessorFieldName());
 
-                Object vanillaValue = data.value();
+                Object vanillaValue = data.getValue();
 
-                if (data.value() instanceof Component c) {
+                if (data.getValue() == null) {
+                    continue;
+                }
+
+                if (data.getValue() instanceof Component c) {
                     vanillaValue = PaperAdventure.asVanilla(c);
                 }
 

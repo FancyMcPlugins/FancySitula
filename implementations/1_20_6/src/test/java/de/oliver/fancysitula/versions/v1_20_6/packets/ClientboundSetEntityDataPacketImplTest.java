@@ -14,7 +14,7 @@ class ClientboundSetEntityDataPacketImplTest {
         int entityId = 712;
         List<FS_ClientboundSetEntityDataPacket.EntityData> entityData = List.of(
                 new FS_ClientboundSetEntityDataPacket.EntityData(
-                        TextDisplayData.TEXT.get(),
+                        TextDisplayData.TEXT,
                         "Hello, World!"
                 )
         );

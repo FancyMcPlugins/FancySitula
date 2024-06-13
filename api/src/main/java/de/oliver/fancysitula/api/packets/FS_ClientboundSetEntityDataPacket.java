@@ -28,11 +28,34 @@ public abstract class FS_ClientboundSetEntityDataPacket implements FS_Clientboun
         this.entityData = entityData;
     }
 
-    /**
-     * @param accessor can be found in {@link de.oliver.fancysitula.api.utils.entityData}
-     * @param value    must be the correct type for the accessor (see accessor javadoc)
-     */
-    public record EntityData(EntityDataAccessor accessor, Object value) {
+    public static class EntityData {
+        private EntityDataAccessor accessor;
+        private Object value;
+
+        /**
+         * @param accessor can be found in {@link de.oliver.fancysitula.api.utils.entityData}
+         * @param value    must be the correct type for the accessor (see accessor javadoc)
+         */
+        public EntityData(EntityDataAccessor accessor, Object value) {
+            this.accessor = accessor;
+            this.value = value;
+        }
+
+        public EntityDataAccessor getAccessor() {
+            return accessor;
+        }
+
+        public void setAccessor(EntityDataAccessor accessor) {
+            this.accessor = accessor;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public void setValue(Object value) {
+            this.value = value;
+        }
     }
 
     /**
