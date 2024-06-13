@@ -92,6 +92,14 @@ public class FS_Display extends FS_Entity {
         this.billboardRenderConstraintsData.setValue(billboardRenderConstraints);
     }
 
+    public Billboard getBillboard() {
+        return Billboard.getById(getBillboardRenderConstraints());
+    }
+
+    public void setBillboard(Billboard billboard) {
+        this.billboardRenderConstraintsData.setValue(billboard.getId());
+    }
+
     public int getBrightnessOverride() {
         return (int) this.brightnessOverrideData.getValue();
     }
@@ -168,6 +176,39 @@ public class FS_Display extends FS_Entity {
         entityData.add(this.heightData);
         entityData.add(this.glowColorOverrideData);
         return entityData;
+    }
+
+    public enum Billboard {
+        FIXED((byte) 0, "fixed"),
+        VERTICAL((byte) 1, "vertical"),
+        HORIZONTAL((byte) 2, "horizontal"),
+        CENTER((byte) 3, "center"),
+        ;
+
+        private final byte id;
+        private final String name;
+
+        Billboard(byte id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public static Billboard getById(byte id) {
+            for (Billboard value : values()) {
+                if (value.getId() == id) {
+                    return value;
+                }
+            }
+            return null;
+        }
+
+        public byte getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
 }

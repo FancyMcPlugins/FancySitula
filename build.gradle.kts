@@ -7,7 +7,7 @@ plugins {
 
 allprojects {
     group = "de.oliver"
-    version = "0.0.0"
+    version = "0.0.2"
     description = "Simple, lightweight and fast library for minecraft internals"
 
     repositories {
@@ -22,12 +22,17 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:${findProperty("minecraftVersion")}-R0.1-SNAPSHOT")
 
     implementation(project(":api"))
+    implementation(project(":factories"))
     implementation(project(":implementations:1_20_6"))
 }
 
 tasks {
     shadowJar {
         archiveClassifier.set("")
+        configurations = listOf(project.configurations["runtimeClasspath"])
+        dependencies {
+            include(dependency("de.oliver:.*"))
+        }
     }
 
     publishing {
@@ -53,11 +58,10 @@ tasks {
             }
         }
         publications {
-            create<MavenPublication>("maven") {
+            create<MavenPublication>("shadow") {
                 groupId = project.group.toString()
-                artifactId = project.name
                 version = project.version.toString()
-                from(project.components["java"])
+                artifact(shadowJar)
             }
         }
     }
