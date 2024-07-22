@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 
 public enum ServerVersion {
 
+    v1_21("1.21", 767),
     v1_20_6("1.20.6", 766);
 
     private final String version;
