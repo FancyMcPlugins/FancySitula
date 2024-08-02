@@ -2,6 +2,9 @@ package de.oliver.fancysitula.commands;
 
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.entities.FS_TextDisplay;
+import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
+import de.oliver.fancysitula.api.utils.FS_GameProfile;
+import de.oliver.fancysitula.api.utils.FS_GameType;
 import de.oliver.fancysitula.factories.FancySitula;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
@@ -9,6 +12,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
+
+import java.util.EnumSet;
+import java.util.List;
+import java.util.UUID;
 
 public class FancySitulaCMD extends Command {
 
@@ -36,5 +43,37 @@ public class FancySitulaCMD extends Command {
         FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeTextDisplay);
 
         return true;
+    }
+
+    private void fakeTablistEntries(Player to) {
+// Wrap the real player into an FS_Player instance
+        FS_RealPlayer fsPlayer = new FS_RealPlayer(to);
+
+
+        UUID uuid1 = UUID.randomUUID();
+        FS_ClientboundPlayerInfoUpdatePacket.Entry entry1 = new FS_ClientboundPlayerInfoUpdatePacket.Entry(
+                uuid1,
+                new FS_GameProfile(uuid1, ""),
+                true,
+                69,
+                FS_GameType.SURVIVAL,
+                Component.text("player1")
+        );
+
+        UUID uuid2 = UUID.randomUUID();
+        FS_ClientboundPlayerInfoUpdatePacket.Entry entry2 = new FS_ClientboundPlayerInfoUpdatePacket.Entry(
+                uuid2,
+                new FS_GameProfile(uuid2, ""),
+                true,
+                69,
+                FS_GameType.SURVIVAL,
+                Component.text("player2")
+        );
+
+        FS_ClientboundPlayerInfoUpdatePacket playerInfoUpdatePacket = FancySitula.PACKET_FACTORY.createPlayerInfoUpdatePacket(
+                EnumSet.of(FS_ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER, FS_ClientboundPlayerInfoUpdatePacket.Action.UPDATE_LISTED, FS_ClientboundPlayerInfoUpdatePacket.Action.UPDATE_DISPLAY_NAME),
+                List.of(entry1, entry2)
+        );
+        playerInfoUpdatePacket.send(fsPlayer);
     }
 }
