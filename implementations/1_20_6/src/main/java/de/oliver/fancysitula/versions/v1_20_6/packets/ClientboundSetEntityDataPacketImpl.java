@@ -9,6 +9,7 @@ import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,10 @@ public class ClientboundSetEntityDataPacketImpl extends FS_ClientboundSetEntityD
 
                 if (data.getValue() instanceof Component c) {
                     vanillaValue = PaperAdventure.asVanilla(c);
+                }
+
+                if (data.getValue() instanceof ItemStack i) {
+                    vanillaValue = net.minecraft.world.item.ItemStack.fromBukkitCopy(i);
                 }
 
                 dataValues.add(SynchedEntityData.DataValue.create(accessor, vanillaValue));

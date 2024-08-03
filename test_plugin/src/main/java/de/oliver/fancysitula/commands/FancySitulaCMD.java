@@ -1,7 +1,7 @@
 package de.oliver.fancysitula.commands;
 
+import de.oliver.fancysitula.api.entities.FS_ItemDisplay;
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
-import de.oliver.fancysitula.api.entities.FS_TextDisplay;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
@@ -33,14 +33,20 @@ public class FancySitulaCMD extends Command {
         // Wrap the real player into an FS_Player instance
         FS_RealPlayer fsPlayer = new FS_RealPlayer(p);
 
-        FS_TextDisplay fakeTextDisplay = new FS_TextDisplay();
-        fakeTextDisplay.setBillboardRenderConstraints((byte) 3);
-        fakeTextDisplay.setScale(new Vector3f(5f));
-        fakeTextDisplay.setLocation(p.getLocation());
-        fakeTextDisplay.setText(Component.text("Hello, World!"));
-        fakeTextDisplay.setBackground(0xFF00C8FF);
+//        FS_TextDisplay fakeTextDisplay = new FS_TextDisplay();
+//        fakeTextDisplay.setBillboardRenderConstraints((byte) 3);
+//        fakeTextDisplay.setScale(new Vector3f(5f));
+//        fakeTextDisplay.setLocation(p.getLocation());
+//        fakeTextDisplay.setText(Component.text("Hello, World!"));
+//        fakeTextDisplay.setBackground(0xFF00C8FF);
+//        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeTextDisplay);
 
-        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeTextDisplay);
+        FS_ItemDisplay fakeItemDisplay = new FS_ItemDisplay();
+        fakeItemDisplay.setBillboardRenderConstraints((byte) 3);
+        fakeItemDisplay.setScale(new Vector3f(5f));
+        fakeItemDisplay.setLocation(p.getLocation());
+        fakeItemDisplay.setItem(p.getInventory().getItemInMainHand());
+        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeItemDisplay);
 
         return true;
     }
