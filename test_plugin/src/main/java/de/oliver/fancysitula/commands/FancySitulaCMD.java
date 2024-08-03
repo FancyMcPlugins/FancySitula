@@ -1,12 +1,13 @@
 package de.oliver.fancysitula.commands;
 
-import de.oliver.fancysitula.api.entities.FS_ItemDisplay;
+import de.oliver.fancysitula.api.entities.FS_BlockDisplay;
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
 import de.oliver.fancysitula.factories.FancySitula;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -41,12 +42,19 @@ public class FancySitulaCMD extends Command {
 //        fakeTextDisplay.setBackground(0xFF00C8FF);
 //        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeTextDisplay);
 
-        FS_ItemDisplay fakeItemDisplay = new FS_ItemDisplay();
-        fakeItemDisplay.setBillboardRenderConstraints((byte) 3);
-        fakeItemDisplay.setScale(new Vector3f(5f));
-        fakeItemDisplay.setLocation(p.getLocation());
-        fakeItemDisplay.setItem(p.getInventory().getItemInMainHand());
-        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeItemDisplay);
+//        FS_ItemDisplay fakeItemDisplay = new FS_ItemDisplay();
+//        fakeItemDisplay.setBillboardRenderConstraints((byte) 3);
+//        fakeItemDisplay.setScale(new Vector3f(5f));
+//        fakeItemDisplay.setLocation(p.getLocation());
+//        fakeItemDisplay.setItem(p.getInventory().getItemInMainHand());
+//        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeItemDisplay);
+
+        FS_BlockDisplay fakeBlockDisplay = new FS_BlockDisplay();
+        fakeBlockDisplay.setBillboardRenderConstraints((byte) 3);
+        fakeBlockDisplay.setScale(new Vector3f(5f));
+        fakeBlockDisplay.setLocation(p.getLocation());
+        fakeBlockDisplay.setBlock(Material.DIAMOND_BLOCK.createBlockData().createBlockState());
+        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeBlockDisplay);
 
         return true;
     }

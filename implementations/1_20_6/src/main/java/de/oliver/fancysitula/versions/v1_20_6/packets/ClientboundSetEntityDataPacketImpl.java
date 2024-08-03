@@ -9,6 +9,8 @@ import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
+import org.bukkit.block.BlockState;
+import org.bukkit.craftbukkit.block.CraftBlockState;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -40,6 +42,10 @@ public class ClientboundSetEntityDataPacketImpl extends FS_ClientboundSetEntityD
 
                 if (data.getValue() instanceof ItemStack i) {
                     vanillaValue = net.minecraft.world.item.ItemStack.fromBukkitCopy(i);
+                }
+
+                if (data.getValue() instanceof BlockState b) {
+                    vanillaValue = ((CraftBlockState) b).getHandle();
                 }
 
                 dataValues.add(SynchedEntityData.DataValue.create(accessor, vanillaValue));
