@@ -23,7 +23,7 @@ public class PacketFactory {
             ServerVersion serverVersion, EnumSet<FS_ClientboundPlayerInfoUpdatePacket.Action> actions,
             List<FS_ClientboundPlayerInfoUpdatePacket.Entry> entries) {
         switch (serverVersion) {
-            case v1_20_6, v1_21 -> {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
                 return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundPlayerInfoUpdatePacketImpl(actions, entries);
             }
             default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
@@ -65,7 +65,7 @@ public class PacketFactory {
             int velocityZ,
             int data) {
         switch (serverVersion) {
-            case v1_20_6, v1_21 -> {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
                 return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundAddEntityPacketImpl(entityId, entityUUID, entityType, x, y, z, yaw, pitch, headYaw, velocityX, velocityY, velocityZ, data);
             }
             default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
@@ -103,7 +103,7 @@ public class PacketFactory {
      */
     public FS_ClientboundPlayerInfoRemovePacket createPlayerInfoRemovePacket(ServerVersion serverVersion, List<UUID> uuids) {
         switch (serverVersion) {
-            case v1_20_6, v1_21 -> {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
                 return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundPlayerInfoRemovePacketImpl(uuids);
             }
             default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
@@ -144,7 +144,7 @@ public class PacketFactory {
      */
     public FS_ClientboundRemoveEntitiesPacket createRemoveEntitiesPacket(ServerVersion serverVersion, List<Integer> entityIds) {
         switch (serverVersion) {
-            case v1_20_6, v1_21 -> {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
                 return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundRemoveEntitiesPacketImpl(entityIds);
             }
             default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
@@ -182,7 +182,7 @@ public class PacketFactory {
             boolean onGround
     ) {
         switch (serverVersion) {
-            case v1_20_6, v1_21 -> {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
                 return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundTeleportEntityPacketImpl(entityId, x, y, z, yaw, pitch, onGround);
             }
             default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
@@ -220,7 +220,7 @@ public class PacketFactory {
      */
     public FS_ClientboundRotateHeadPacket createRotateHeadPacket(ServerVersion serverVersion, int entityId, float headYaw) {
         switch (serverVersion) {
-            case v1_20_6, v1_21 -> {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
                 return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundRotateHeadPacketImpl(entityId, headYaw);
             }
             default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
@@ -246,7 +246,7 @@ public class PacketFactory {
     public FS_ClientboundSetEntityDataPacket createSetEntityDataPacket(
             ServerVersion serverVersion, int entityId, List<FS_ClientboundSetEntityDataPacket.EntityData> entityData) {
         switch (serverVersion) {
-            case v1_20_6, v1_21 -> {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
                 return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundSetEntityDataPacketImpl(entityId, entityData);
             }
             default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
