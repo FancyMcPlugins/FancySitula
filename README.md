@@ -10,8 +10,10 @@ interacting with Minecraft internals. It provides a simple API to interact with 
 FancySitula will support the latest Minecraft version and additional older versions. The following versions are
 supported:
 
+- [x] 1.21.1
 - [x] 1.21
 - [x] 1.20.6
+- [x] 1.20.5
 - [ ] 1.20.4
 - [ ] 1.20.2
 - [ ] 1.20.1
