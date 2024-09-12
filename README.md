@@ -12,6 +12,7 @@ entities.
 - Powerful factory classes for creating packets
 - Wrapper classes for Minecraft packets and entities
 - Support for multiple Minecraft versions
+- No third-party dependencies and works out of the box
 
 ## Supported packets
 
@@ -49,8 +50,8 @@ supported:
 - [x] ClientboundRemoveEntitiesPacket
 - [x] ClientboundTeleportEntityPacket
 - [x] ClientboundRotateHeadPacket
+- [x] ClientboundSetEquipmentPacket
 - [ ] ClientboundSetPlayerTeamPacket
-- [ ] ClientboundSetEquipmentPacket
 - [ ] ClientboundUpdateAttributesPacket
 - [ ] ClientboundSetEntityDataPacket
 - [ ] ClientboundAnimatePacket

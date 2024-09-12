@@ -1,11 +1,14 @@
 package de.oliver.fancysitula.factories;
 
 import de.oliver.fancysitula.api.packets.*;
+import de.oliver.fancysitula.api.utils.FS_EquipmentSlot;
 import de.oliver.fancysitula.api.utils.ServerVersion;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -261,5 +264,30 @@ public class PacketFactory {
      */
     public FS_ClientboundSetEntityDataPacket createSetEntityDataPacket(int entityId, List<FS_ClientboundSetEntityDataPacket.EntityData> entityData) {
         return createSetEntityDataPacket(ServerVersion.getCurrentVersion(), entityId, entityData);
+    }
+
+    /**
+     * Creates a new FS_ClientboundSetEquipmentPacket instance based on the server version
+     *
+     * @param entityId  ID of the entity to set the equipment of
+     * @param equipment Map of {@link org.bukkit.inventory.EquipmentSlot} and {@link org.bukkit.inventory.ItemStack} to set
+     */
+    public FS_ClientboundSetEquipmentPacket createSetEquipmentPacket(ServerVersion serverVersion, int entityId, Map<FS_EquipmentSlot, ItemStack> equipment) {
+        switch (serverVersion) {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundSetEquipmentPacketImpl(entityId, equipment);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a new FS_ClientboundSetEquipmentPacket instance based on the current server version
+     *
+     * @param entityId  ID of the entity to set the equipment of
+     * @param equipment Map of {@link org.bukkit.inventory.EquipmentSlot} and {@link org.bukkit.inventory.ItemStack} to set
+     */
+    public FS_ClientboundSetEquipmentPacket createSetEquipmentPacket(int entityId, Map<FS_EquipmentSlot, ItemStack> equipment) {
+        return createSetEquipmentPacket(ServerVersion.getCurrentVersion(), entityId, equipment);
     }
 }
