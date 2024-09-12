@@ -2,8 +2,31 @@
 
 ## Using Minecraft internals made easier.
 
-Developed for FancyNpcs and FancyHolograms exclusively, FancySitula is a library that simplifies the process of
-interacting with Minecraft internals. It provides a simple API to interact with Minecraft packets and entities.
+Initially developed for FancyNpcs and FancyHolograms, FancySitula is a library that simplifies the process of
+interacting with Minecraft internals. It provides a simple and easy to use API to interact with Minecraft packets and
+entities.
+
+## Features
+
+- Easy to use API for creating and sending packets
+- Powerful factory classes for creating packets
+- Wrapper classes for Minecraft packets and entities
+- Support for multiple Minecraft versions
+
+## Supported packets
+
+The following packets are currently supported:
+
+- ClientboundAddEntityPacket
+- ClientboundPlayerInfoRemovePacket
+- ClientboundPlayerInfoUpdatePacket
+- ClientboundRemoveEntitiesPacket
+- ClientboundRotateHeadPacket
+- ClientboundSetEntityDataPacket
+- ClientboundSetEquipmentPacket
+- ClientboundTeleportEntityPacket
+
+More packets will be added when needed / requested (contributions are welcome).
 
 ## Supported Minecraft versions
 
@@ -18,7 +41,7 @@ supported:
 - [ ] 1.20.2
 - [ ] 1.20.1
 
-## Missing Packets (for FancyNpcs and FancyHolograms)
+## Missing Packets for FancyNpcs
 
 - [x] ClientboundPlayerInfoUpdatePacket
 - [x] ClientboundAddEntityPacket
