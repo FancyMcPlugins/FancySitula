@@ -290,4 +290,30 @@ public class PacketFactory {
     public FS_ClientboundSetEquipmentPacket createSetEquipmentPacket(int entityId, Map<FS_EquipmentSlot, ItemStack> equipment) {
         return createSetEquipmentPacket(ServerVersion.getCurrentVersion(), entityId, equipment);
     }
+
+    /**
+     * Creates a new FS_ClientboundSetPassengersPacket instance based on the server version
+     *
+     * @param entityId   ID of the vehicle entity
+     * @param passengers List of entity IDs to set as passengers
+     */
+    public FS_ClientboundSetPassengersPacket createSetPassengersPacket(
+            ServerVersion serverVersion, int entityId, List<Integer> passengers) {
+        switch (serverVersion) {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundSetPassengersPacketImpl(entityId, passengers);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a new FS_ClientboundSetPassengersPacket instance based on the current server version
+     *
+     * @param entityId   ID of the vehicle entity
+     * @param passengers List of entity IDs to set as passengers
+     */
+    public FS_ClientboundSetPassengersPacket createSetPassengersPacket(int entityId, List<Integer> passengers) {
+        return createSetPassengersPacket(ServerVersion.getCurrentVersion(), entityId, passengers);
+    }
 }
