@@ -1,6 +1,6 @@
 package de.oliver.fancysitula.api.packets;
 
-public abstract class FS_ClientboundRotateHeadPacket implements FS_ClientboundPacket {
+public abstract class FS_ClientboundRotateHeadPacket extends FS_ClientboundPacket {
 
     protected int entityId;
     protected float headYaw;

@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Used to update the player list of the client.
  */
-public abstract class FS_ClientboundPlayerInfoUpdatePacket implements FS_ClientboundPacket {
+public abstract class FS_ClientboundPlayerInfoUpdatePacket extends FS_ClientboundPacket {
 
     protected EnumSet<Action> actions;
     protected List<Entry> entries;

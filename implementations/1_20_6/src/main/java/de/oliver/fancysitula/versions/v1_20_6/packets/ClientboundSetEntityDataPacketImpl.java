@@ -58,7 +58,7 @@ public class ClientboundSetEntityDataPacketImpl extends FS_ClientboundSetEntityD
     }
 
     @Override
-    public void send(FS_RealPlayer player) {
+    public void sendPacketTo(FS_RealPlayer player) {
         ClientboundSetEntityDataPacket packet = (ClientboundSetEntityDataPacket) createPacket();
 
         ServerPlayer vanillaPlayer = VanillaPlayerAdapter.asVanilla(player.getBukkitPlayer());

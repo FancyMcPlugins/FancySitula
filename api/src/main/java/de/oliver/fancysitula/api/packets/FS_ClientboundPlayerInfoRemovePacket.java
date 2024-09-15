@@ -6,7 +6,7 @@ import java.util.UUID;
 /**
  * Used to remove players from the client's player list.
  */
-public abstract class FS_ClientboundPlayerInfoRemovePacket implements FS_ClientboundPacket {
+public abstract class FS_ClientboundPlayerInfoRemovePacket extends FS_ClientboundPacket {
 
     protected List<UUID> uuids;
 

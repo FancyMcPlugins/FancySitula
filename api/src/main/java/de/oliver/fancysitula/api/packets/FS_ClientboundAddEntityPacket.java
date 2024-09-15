@@ -7,7 +7,7 @@ import java.util.UUID;
 /**
  * Used to add an entity to the client's world.
  */
-public abstract class FS_ClientboundAddEntityPacket implements FS_ClientboundPacket {
+public abstract class FS_ClientboundAddEntityPacket extends FS_ClientboundPacket {
 
     protected int entityId;
     protected UUID entityUUID;

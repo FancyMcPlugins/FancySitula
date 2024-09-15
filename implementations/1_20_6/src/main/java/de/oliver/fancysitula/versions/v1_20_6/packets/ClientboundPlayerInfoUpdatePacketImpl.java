@@ -43,7 +43,7 @@ public class ClientboundPlayerInfoUpdatePacketImpl extends FS_ClientboundPlayerI
     }
 
     @Override
-    public void send(FS_RealPlayer player) {
+    public void sendPacketTo(FS_RealPlayer player) {
         ClientboundPlayerInfoUpdatePacket packet = (ClientboundPlayerInfoUpdatePacket) createPacket();
 
         ServerPlayer vanillaPlayer = VanillaPlayerAdapter.asVanilla(player.getBukkitPlayer());

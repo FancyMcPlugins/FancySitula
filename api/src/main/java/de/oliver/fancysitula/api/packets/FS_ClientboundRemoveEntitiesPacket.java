@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Used to remove entities from the client's world.
  */
-public abstract class FS_ClientboundRemoveEntitiesPacket implements FS_ClientboundPacket {
+public abstract class FS_ClientboundRemoveEntitiesPacket extends FS_ClientboundPacket {
 
     protected List<Integer> entityIds;
 

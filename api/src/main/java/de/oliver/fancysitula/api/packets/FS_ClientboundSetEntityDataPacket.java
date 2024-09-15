@@ -2,7 +2,7 @@ package de.oliver.fancysitula.api.packets;
 
 import java.util.List;
 
-public abstract class FS_ClientboundSetEntityDataPacket implements FS_ClientboundPacket {
+public abstract class FS_ClientboundSetEntityDataPacket extends FS_ClientboundPacket {
 
     protected int entityId;
     protected List<EntityData> entityData;

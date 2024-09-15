@@ -36,7 +36,7 @@ public class ClientboundSetEquipmentPacketImpl extends FS_ClientboundSetEquipmen
     }
 
     @Override
-    public void send(FS_RealPlayer player) {
+    public void sendPacketTo(FS_RealPlayer player) {
         ClientboundSetEquipmentPacket packet = (ClientboundSetEquipmentPacket) createPacket();
 
         ServerPlayer vanillaPlayer = VanillaPlayerAdapter.asVanilla(player.getBukkitPlayer());

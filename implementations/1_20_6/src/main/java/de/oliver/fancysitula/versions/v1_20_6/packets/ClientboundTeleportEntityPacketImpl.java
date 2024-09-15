@@ -34,7 +34,7 @@ public class ClientboundTeleportEntityPacketImpl extends FS_ClientboundTeleportE
     }
 
     @Override
-    public void send(FS_RealPlayer player) {
+    public void sendPacketTo(FS_RealPlayer player) {
         ClientboundTeleportEntityPacket packet = (ClientboundTeleportEntityPacket) createPacket();
 
         ServerPlayer vanillaPlayer = VanillaPlayerAdapter.asVanilla(player.getBukkitPlayer());

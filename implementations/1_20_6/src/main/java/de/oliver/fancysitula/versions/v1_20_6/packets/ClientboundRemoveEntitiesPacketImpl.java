@@ -28,7 +28,7 @@ public class ClientboundRemoveEntitiesPacketImpl extends FS_ClientboundRemoveEnt
     }
 
     @Override
-    public void send(FS_RealPlayer player) {
+    public void sendPacketTo(FS_RealPlayer player) {
         ClientboundRemoveEntitiesPacket packet = (ClientboundRemoveEntitiesPacket) createPacket();
 
         ServerPlayer vanillaPlayer = VanillaPlayerAdapter.asVanilla(player.getBukkitPlayer());

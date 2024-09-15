@@ -1,6 +1,6 @@
 package de.oliver.fancysitula.api.packets;
 
-public abstract class FS_ClientboundTeleportEntityPacket implements FS_ClientboundPacket {
+public abstract class FS_ClientboundTeleportEntityPacket extends FS_ClientboundPacket {
 
     protected int entityId;
     protected double x;

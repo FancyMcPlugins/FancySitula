@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
 
-public abstract class FS_ClientboundSetEquipmentPacket implements FS_ClientboundPacket {
+public abstract class FS_ClientboundSetEquipmentPacket extends FS_ClientboundPacket {
 
     protected int entityId;
     protected Map<FS_EquipmentSlot, ItemStack> equipment;

@@ -29,7 +29,7 @@ public class ClientboundRotateHeadPacketImpl extends FS_ClientboundRotateHeadPac
     }
 
     @Override
-    public void send(FS_RealPlayer player) {
+    public void sendPacketTo(FS_RealPlayer player) {
         ClientboundRotateHeadPacket packet = (ClientboundRotateHeadPacket) createPacket();
 
         ServerPlayer vanillaPlayer = VanillaPlayerAdapter.asVanilla(player.getBukkitPlayer());
