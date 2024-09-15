@@ -22,6 +22,7 @@ dependencies {
     implementation(project(":api"))
     implementation(project(":factories"))
     implementation(project(":implementations:1_20_6"))
+    implementation("de.oliver.FancyAnalytics:logger:${findProperty("fancyLoggerVersion")}")
 }
 
 paper {

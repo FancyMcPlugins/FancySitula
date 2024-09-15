@@ -1,18 +1,10 @@
 package de.oliver.fancysitula.api.packets;
 
+import de.oliver.fancysitula.api.IFancySitula;
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import org.jetbrains.annotations.ApiStatus;
 
 public abstract class FS_ClientboundPacket {
-
-    protected static boolean enableDebugLogs = false;
-
-    /**
-     * Enables debug logs for all packets.
-     */
-    public static void enableDebugLogs() {
-        enableDebugLogs = true;
-    }
 
     /**
      * Creates the packet object.
@@ -32,9 +24,7 @@ public abstract class FS_ClientboundPacket {
      * Sends the packet to the player.
      */
     public final void send(FS_RealPlayer player) {
-        if (enableDebugLogs) {
-            System.out.println("Sending packet '" + this.getClass().getSimpleName() + "' to " + player.getBukkitPlayer().getName());
-        }
+        IFancySitula.LOGGER.debug("Sending packet '" + this.getClass().getSimpleName() + "' to " + player.getBukkitPlayer().getName());
 
         sendPacketTo(player);
     }
