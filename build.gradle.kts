@@ -7,7 +7,7 @@ plugins {
 
 allprojects {
     group = "de.oliver"
-    version = "0.0.8"
+    version = "0.0.9"
     description = "Simple, lightweight and fast library for minecraft internals"
 
     repositories {
