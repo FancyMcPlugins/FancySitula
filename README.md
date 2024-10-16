@@ -51,8 +51,8 @@ supported:
 - [x] ClientboundTeleportEntityPacket
 - [x] ClientboundRotateHeadPacket
 - [x] ClientboundSetEquipmentPacket
-- [ ] ClientboundSetPlayerTeamPacket
+- [x] ClientboundSetEntityDataPacket
+- [x] ClientboundSetPlayerTeamPacket
 - [ ] ClientboundUpdateAttributesPacket
-- [ ] ClientboundSetEntityDataPacket
 - [ ] ClientboundAnimatePacket
 - [ ] ClientboundSetPassengersPacket

@@ -316,4 +316,150 @@ public class PacketFactory {
     public FS_ClientboundSetPassengersPacket createSetPassengersPacket(int entityId, List<Integer> passengers) {
         return createSetPassengersPacket(ServerVersion.getCurrentVersion(), entityId, passengers);
     }
+
+
+    /**
+     * Creates and returns a FS_ClientboundCreateOrUpdateTeamPacket based on the given server version and team information.
+     *
+     * @param serverVersion the version of the server for which the packet is to be created
+     * @param teamName      the name of the team to be created or updated
+     * @param createTeam    an instance of FS_ClientboundCreateOrUpdateTeamPacket.CreateTeam containing the team creation or update details
+     * @return a FS_ClientboundCreateOrUpdateTeamPacket instance corresponding to the specified server version and team details
+     * @throws IllegalArgumentException if the provided server version is not supported
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(ServerVersion serverVersion, String teamName, FS_ClientboundCreateOrUpdateTeamPacket.CreateTeam createTeam) {
+        switch (serverVersion) {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundCreateOrUpdateTeamPacketImpl(teamName, createTeam);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates an FS_ClientboundCreateOrUpdateTeamPacket for the given team name and creation details.
+     *
+     * @param teamName   The name of the team to create or update.
+     * @param createTeam The details of the team creation or update.
+     * @return An instance of FS_ClientboundCreateOrUpdateTeamPacket containing the creation or update details.
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(String teamName, FS_ClientboundCreateOrUpdateTeamPacket.CreateTeam createTeam) {
+        return createCreateOrUpdateTeamPacket(ServerVersion.getCurrentVersion(), teamName, createTeam);
+    }
+
+    /**
+     * Creates a packet for creating or updating a team based on the specified server version.
+     *
+     * @param serverVersion The version of the server.
+     * @param teamName      The name of the team.
+     * @param removeTeam    Information about whether to remove the team.
+     * @return The packet for creating or updating the team.
+     * @throws IllegalArgumentException if the server version is unsupported.
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(ServerVersion serverVersion, String teamName, FS_ClientboundCreateOrUpdateTeamPacket.RemoveTeam removeTeam) {
+        switch (serverVersion) {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundCreateOrUpdateTeamPacketImpl(teamName, removeTeam);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a packet to create or update a team with the specified name and removal flag.
+     *
+     * @param teamName   the name of the team to create or update
+     * @param removeTeam the flag indicating whether to remove the team
+     * @return a packet for creating or updating the team
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(String teamName, FS_ClientboundCreateOrUpdateTeamPacket.RemoveTeam removeTeam) {
+        return createCreateOrUpdateTeamPacket(ServerVersion.getCurrentVersion(), teamName, removeTeam);
+    }
+
+    /**
+     * Creates an instance of FS_ClientboundCreateOrUpdateTeamPacket based on the provided server version.
+     *
+     * @param serverVersion The server version for which the packet should be created.
+     * @param teamName      The name of the team that is being created or updated.
+     * @param updateTeam    The update team details which contain information about the team.
+     * @return A new instance of FS_ClientboundCreateOrUpdateTeamPacket tailored for the specified server version.
+     * @throws IllegalArgumentException If the provided server version is not supported.
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(ServerVersion serverVersion, String teamName, FS_ClientboundCreateOrUpdateTeamPacket.UpdateTeam updateTeam) {
+        switch (serverVersion) {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundCreateOrUpdateTeamPacketImpl(teamName, updateTeam);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a new FS_ClientboundCreateOrUpdateTeamPacket for creating or updating a team.
+     *
+     * @param teamName   the name of the team to be created or updated
+     * @param updateTeam the update information for the team
+     * @return a new instance of FS_ClientboundCreateOrUpdateTeamPacket
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(String teamName, FS_ClientboundCreateOrUpdateTeamPacket.UpdateTeam updateTeam) {
+        return createCreateOrUpdateTeamPacket(ServerVersion.getCurrentVersion(), teamName, updateTeam);
+    }
+
+    /**
+     * Creates a new instance of FS_ClientboundCreateOrUpdateTeamPacket based on the given server version, team name, and addEntity parameters.
+     *
+     * @param serverVersion the version of the server for which the packet will be created
+     * @param teamName      the name of the team to be created or updated
+     * @param addEntity     the add entity information needed for packet creation
+     * @return an instance of FS_ClientboundCreateOrUpdateTeamPacket appropriate for the specified server version
+     * @throws IllegalArgumentException if the server version is not supported
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(ServerVersion serverVersion, String teamName, FS_ClientboundCreateOrUpdateTeamPacket.AddEntity addEntity) {
+        switch (serverVersion) {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundCreateOrUpdateTeamPacketImpl(teamName, addEntity);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a packet for creating or updating a team with the specified name and entity.
+     *
+     * @param teamName  the name of the team to create or update
+     * @param addEntity the entity representing the addition details for the team
+     * @return the packet representing the create or update operation on the team
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(String teamName, FS_ClientboundCreateOrUpdateTeamPacket.AddEntity addEntity) {
+        return createCreateOrUpdateTeamPacket(ServerVersion.getCurrentVersion(), teamName, addEntity);
+    }
+
+    /**
+     * Creates an instance of FS_ClientboundCreateOrUpdateTeamPacket based on the server version.
+     *
+     * @param serverVersion The version of the server.
+     * @param teamName      The name of the team to create or update.
+     * @param removeEntity  The entity removal configuration for the packet.
+     * @return A new instance of FS_ClientboundCreateOrUpdateTeamPacket for the specified server version.
+     * @throws IllegalArgumentException If the server version is unsupported.
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(ServerVersion serverVersion, String teamName, FS_ClientboundCreateOrUpdateTeamPacket.RemoveEntity removeEntity) {
+        switch (serverVersion) {
+            case v1_20_5, v1_20_6, v1_21, v1_21_1 -> {
+                return new de.oliver.fancysitula.versions.v1_20_6.packets.ClientboundCreateOrUpdateTeamPacketImpl(teamName, removeEntity);
+            }
+            default -> throw new IllegalArgumentException("Unsupported server version: " + serverVersion.getVersion());
+        }
+    }
+
+    /**
+     * Creates a packet for creating or updating a team with the specified name and entity removal configuration.
+     *
+     * @param teamName     the name of the team to create or update
+     * @param removeEntity the entity removal configuration for the team
+     * @return the packet for creating or updating the team
+     */
+    public FS_ClientboundCreateOrUpdateTeamPacket createCreateOrUpdateTeamPacket(String teamName, FS_ClientboundCreateOrUpdateTeamPacket.RemoveEntity removeEntity) {
+        return createCreateOrUpdateTeamPacket(ServerVersion.getCurrentVersion(), teamName, removeEntity);
+    }
 }

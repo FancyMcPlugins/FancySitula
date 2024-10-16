@@ -1,18 +1,19 @@
 package de.oliver.fancysitula.commands;
 
-import de.oliver.fancysitula.api.entities.FS_BlockDisplay;
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
+import de.oliver.fancysitula.api.packets.FS_Color;
+import de.oliver.fancysitula.api.teams.FS_CollisionRule;
+import de.oliver.fancysitula.api.teams.FS_NameTagVisibility;
+import de.oliver.fancysitula.api.teams.FS_Team;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
 import de.oliver.fancysitula.factories.FancySitula;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Vector3f;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -33,6 +34,7 @@ public class FancySitulaCMD extends Command {
 
         // Wrap the real player into an FS_Player instance
         FS_RealPlayer fsPlayer = new FS_RealPlayer(p);
+        testTeam(p);
 
 //        FS_TextDisplay fakeTextDisplay = new FS_TextDisplay();
 //        fakeTextDisplay.setBillboardRenderConstraints((byte) 3);
@@ -49,14 +51,37 @@ public class FancySitulaCMD extends Command {
 //        fakeItemDisplay.setItem(p.getInventory().getItemInMainHand());
 //        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeItemDisplay);
 
-        FS_BlockDisplay fakeBlockDisplay = new FS_BlockDisplay();
-        fakeBlockDisplay.setBillboardRenderConstraints((byte) 3);
-        fakeBlockDisplay.setScale(new Vector3f(5f));
-        fakeBlockDisplay.setLocation(p.getLocation());
-        fakeBlockDisplay.setBlock(Material.DIAMOND_BLOCK.createBlockData().createBlockState());
-        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeBlockDisplay);
+//        FS_BlockDisplay fakeBlockDisplay = new FS_BlockDisplay();
+//        fakeBlockDisplay.setBillboardRenderConstraints((byte) 3);
+//        fakeBlockDisplay.setScale(new Vector3f(5f));
+//        fakeBlockDisplay.setLocation(p.getLocation());
+//        fakeBlockDisplay.setBlock(Material.DIAMOND_BLOCK.createBlockData().createBlockState());
+//        FancySitula.ENTITY_FACTORY.spawnEntityFor(fsPlayer, fakeBlockDisplay);
 
         return true;
+    }
+
+    private void testTeam(Player to) {
+        FS_RealPlayer fsPlayer = new FS_RealPlayer(to);
+
+
+        FS_Team team = new FS_Team(
+                "myTeam",
+                Component.text("My Team"),
+                true,
+                true,
+                FS_NameTagVisibility.ALWAYS,
+                FS_CollisionRule.ALWAYS,
+                FS_Color.AQUA,
+                Component.text("Prefix"),
+                Component.text("Suffix"),
+                List.of("OliverHD", "OliverHD_2")
+        );
+
+
+        FancySitula.TEAM_FACTORY.createTeamFor(fsPlayer, team);
+//        FancySitula.TEAM_FACTORY.updateTeamFor(fsPlayer, team);
+//        FancySitula.TEAM_FACTORY.addEntitiesToTeamFor(fsPlayer, team, List.of("OliverHD", "OliverHD_2"));
     }
 
     private void fakeTablistEntries(Player to) {
