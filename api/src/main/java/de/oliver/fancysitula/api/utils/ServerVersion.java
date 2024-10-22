@@ -7,6 +7,7 @@ import java.util.List;
 
 public enum ServerVersion {
 
+    v1_21_2("1.21.2", 768),
     v1_21_1("1.21.1", 767),
     v1_21("1.21", 767),
     v1_20_6("1.20.6", 766),
