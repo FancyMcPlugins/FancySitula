@@ -47,11 +47,11 @@ public class FS_Entity {
 
     // Entity data
 
-    public int getSharedFlags() {
-        return (int) sharedFlagsData.getValue();
+    public byte getSharedFlags() {
+        return (byte) sharedFlagsData.getValue();
     }
 
-    public void setSharedFlags(int sharedFlags) {
+    public void setSharedFlags(byte sharedFlags) {
         this.sharedFlagsData.setValue(sharedFlags);
     }
 
