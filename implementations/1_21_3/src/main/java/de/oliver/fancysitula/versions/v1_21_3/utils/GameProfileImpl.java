@@ -1,4 +1,4 @@
-package de.oliver.fancysitula.versions.v1_20_6.utils;
+package de.oliver.fancysitula.versions.v1_21_3.utils;
 
 import com.mojang.authlib.GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;

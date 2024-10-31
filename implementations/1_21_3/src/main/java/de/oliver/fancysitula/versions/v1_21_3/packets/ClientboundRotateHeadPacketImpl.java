@@ -1,10 +1,10 @@
-package de.oliver.fancysitula.versions.v1_20_6.packets;
+package de.oliver.fancysitula.versions.v1_21_3.packets;
 
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundRotateHeadPacket;
 import de.oliver.fancysitula.api.utils.AngelConverter;
 import de.oliver.fancysitula.api.utils.reflections.ReflectionUtils;
-import de.oliver.fancysitula.versions.v1_20_6.utils.VanillaPlayerAdapter;
+import de.oliver.fancysitula.versions.v1_21_3.utils.VanillaPlayerAdapter;
 import net.minecraft.network.protocol.game.ClientboundRotateHeadPacket;
 import net.minecraft.server.level.ServerPlayer;
 

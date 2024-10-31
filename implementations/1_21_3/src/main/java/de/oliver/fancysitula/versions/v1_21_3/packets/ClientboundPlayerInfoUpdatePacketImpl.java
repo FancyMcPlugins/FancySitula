@@ -1,9 +1,9 @@
-package de.oliver.fancysitula.versions.v1_20_6.packets;
+package de.oliver.fancysitula.versions.v1_21_3.packets;
 
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
-import de.oliver.fancysitula.versions.v1_20_6.utils.GameProfileImpl;
-import de.oliver.fancysitula.versions.v1_20_6.utils.VanillaPlayerAdapter;
+import de.oliver.fancysitula.versions.v1_21_3.utils.GameProfileImpl;
+import de.oliver.fancysitula.versions.v1_21_3.utils.VanillaPlayerAdapter;
 import io.papermc.paper.adventure.PaperAdventure;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
 import net.minecraft.server.level.ServerPlayer;

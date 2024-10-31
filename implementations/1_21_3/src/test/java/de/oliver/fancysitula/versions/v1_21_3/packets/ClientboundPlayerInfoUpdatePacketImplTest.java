@@ -1,8 +1,9 @@
-package de.oliver.fancysitula.versions.v1_20_6.packets;
+package de.oliver.fancysitula.versions.v1_21_3.packets;
 
 import de.oliver.fancysitula.api.packets.FS_ClientboundPlayerInfoUpdatePacket;
 import de.oliver.fancysitula.api.utils.FS_GameProfile;
 import de.oliver.fancysitula.api.utils.FS_GameType;
+import de.oliver.fancysitula.versions.v1_21_3.packets.ClientboundPlayerInfoUpdatePacketImpl;
 import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
 import org.junit.jupiter.api.Test;

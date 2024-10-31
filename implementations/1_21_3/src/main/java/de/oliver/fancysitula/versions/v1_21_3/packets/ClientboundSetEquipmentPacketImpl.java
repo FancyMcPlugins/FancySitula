@@ -1,10 +1,10 @@
-package de.oliver.fancysitula.versions.v1_20_6.packets;
+package de.oliver.fancysitula.versions.v1_21_3.packets;
 
 import com.mojang.datafixers.util.Pair;
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundSetEquipmentPacket;
 import de.oliver.fancysitula.api.utils.FS_EquipmentSlot;
-import de.oliver.fancysitula.versions.v1_20_6.utils.VanillaPlayerAdapter;
+import de.oliver.fancysitula.versions.v1_21_3.utils.VanillaPlayerAdapter;
 import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;

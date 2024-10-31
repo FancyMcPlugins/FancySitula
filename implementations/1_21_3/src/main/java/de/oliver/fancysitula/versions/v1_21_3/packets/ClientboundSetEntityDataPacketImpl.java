@@ -1,9 +1,9 @@
-package de.oliver.fancysitula.versions.v1_20_6.packets;
+package de.oliver.fancysitula.versions.v1_21_3.packets;
 
 import de.oliver.fancysitula.api.entities.FS_RealPlayer;
 import de.oliver.fancysitula.api.packets.FS_ClientboundSetEntityDataPacket;
 import de.oliver.fancysitula.api.utils.reflections.ReflectionUtils;
-import de.oliver.fancysitula.versions.v1_20_6.utils.VanillaPlayerAdapter;
+import de.oliver.fancysitula.versions.v1_21_3.utils.VanillaPlayerAdapter;
 import io.papermc.paper.adventure.PaperAdventure;
 import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;

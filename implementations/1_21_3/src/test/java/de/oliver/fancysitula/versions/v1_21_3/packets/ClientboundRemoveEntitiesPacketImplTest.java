@@ -1,5 +1,6 @@
-package de.oliver.fancysitula.versions.v1_20_6.packets;
+package de.oliver.fancysitula.versions.v1_21_3.packets;
 
+import de.oliver.fancysitula.versions.v1_21_3.packets.ClientboundRemoveEntitiesPacketImpl;
 import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import org.junit.jupiter.api.Test;
 
