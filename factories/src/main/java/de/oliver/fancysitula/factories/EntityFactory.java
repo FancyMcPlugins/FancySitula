@@ -9,6 +9,10 @@ import java.util.List;
 public class EntityFactory {
 
     public void spawnEntityFor(FS_RealPlayer player, FS_Entity entity) {
+        if (entity == null) {
+            return;
+        }
+
         FancySitula.PACKET_FACTORY.createAddEntityPacket(
                 entity.getId(),
                 entity.getUuid(),
@@ -29,6 +33,10 @@ public class EntityFactory {
     }
 
     public void despawnEntityFor(FS_RealPlayer player, FS_Entity entity) {
+        if (entity == null) {
+            return;
+        }
+
         FancySitula.PACKET_FACTORY.createRemoveEntitiesPacket(
                         List.of(entity.getId())
                 )
@@ -36,6 +44,10 @@ public class EntityFactory {
     }
 
     public void setEntityDataFor(FS_RealPlayer player, FS_Entity entity) {
+        if (entity == null) {
+            return;
+        }
+
         if (entity.getEntityData().isEmpty()) {
             return;
         }
@@ -47,6 +59,10 @@ public class EntityFactory {
     }
 
     public void setEntityEquipmentFor(FS_RealPlayer player, FS_Player entity) {
+        if (entity == null) {
+            return;
+        }
+
         FancySitula.PACKET_FACTORY.createSetEquipmentPacket(
                 entity.getId(),
                 entity.getEquipment()
