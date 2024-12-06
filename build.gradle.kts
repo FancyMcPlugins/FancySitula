@@ -7,7 +7,7 @@ plugins {
 
 allprojects {
     group = "de.oliver"
-    version = "0.0.12"
+    version = "0.0.13"
     description = "Simple, lightweight and fast library for minecraft internals"
 
     repositories {
@@ -23,6 +23,7 @@ dependencies {
 
     implementation(project(":api"))
     implementation(project(":factories"))
+    implementation(project(":implementations:1_21_4"))
     implementation(project(":implementations:1_21_3"))
     implementation(project(":implementations:1_20_6"))
     implementation("de.oliver.FancyAnalytics:logger:${findProperty("fancyLoggerVersion")}")
